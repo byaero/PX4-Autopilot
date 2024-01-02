@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# board specific defaults
+#------------------------------------------------------------------------------
+
+
+param set-default BAT1_V_DIV 18.1
+param set-default BAT2_V_DIV 18.1
+param set-default BAT1_DV_DIV 18.1
+param set-default BAT2_DV_DIV 18.1
+
+param set-default BAT1_A_PER_V 36.367515152
+param set-default BAT2_A_PER_V 36.367515152
+
+# Mavlink ethernet (CFG 1000)
+param set-default MAV_2_CONFIG 1000
+param set-default MAV_2_BROADCAST 1
+param set-default MAV_2_MODE 0
+param set-default MAV_2_RADIO_CTL 0
+param set-default MAV_2_RATE 100000
+param set-default MAV_2_REMOTE_PRT 14550
+param set-default MAV_2_UDP_PRT 14550
+
+# 默认仅使用主罗盘（外置罗盘）
+param set-default EKF2_MULTI_MAG 0
+param set-default SENS_MAG_MODE 1
+
+# 禁止外置IIC设备由rc.sensors文件启动，由rc.board_sensors文件启动
+param set-default SENS_EXT_I2C_PRB 0
+
+# 使能acme mavlink协议
+# param set-default MAV_ACME_ENABLE 1
+
+param set-default SDLOG_MODE 2
+
+param set-default CAL_MAG_SIDES 34
+
+param set-default RC_MAP_FLTMODE 5
+
+param set-default RC_MAP_TRANS_SW 8
+
+param set-default RC_MAP_RETURN_SW 9
+
+param set-default COM_FLTMODE1 1
+
+param set-default COM_FLTMODE4 2
+
+param set-default COM_FLTMODE6 4
+
+# enable double gps yaw
+param set-default GPS_2_CONFIG 202
+
+param set-default EKF2_AID_MASK 129
+
+param set-default SENS_GPS_PRIME -1
+
+param set-default SENS_GPS_MASK 7

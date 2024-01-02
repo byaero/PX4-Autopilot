@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# PX4 FMUv6C specific board sensors init
+#------------------------------------------------------------------------------
+board_adc start
+
+#rgbled_ncp5623c start -I
+
+# Internal barometer on SPI1
+ms5611 -s -b 1 start
+
+# A111
+echo "A111 sensor init"
+
+if rgbled_ncp5623c start -I -q
+then
+	rgbled_ncp5623c stop -X
+else
+	rgbled_ncp5623c start -X -l 32
+fi
+
+# Internal SPI4 bus BMI088 accel/gyro
+bmi088 -s -b 4 -A -R 2 start
+bmi088 -s -b 4 -G -R 2 start
+
+icm20689 -s -b 1 -R 2 start
+ist8310 -I -a 0xE -R 2 start
+
+# External compass on GPS/I2C1 (the 3rd external bus)
+ist8310 -X -a 0xF -R 10 start
+
+qmc5883l -X -R 8 start
